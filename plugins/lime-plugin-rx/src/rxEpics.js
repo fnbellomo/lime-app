@@ -34,12 +34,13 @@ export const nodeStatus = (action$, _store, { wsAPI }) =>
         ofType(GET_NODE_STATUS),
         mergeMap(() => from(getNodeStauts(wsAPI))),
         map((payload) => ({ type: GET_NODE_STATUS_SUCCESS, payload })),
+        // @ts-ignore
         catchError([{ type: GET_NODE_STATUS_ERROR }])
     );
 
 const runTimer = (action$, store) =>
     action$.pipe(
-        ofType(...[TIMER_START]),
+        ofType(TIMER_START),
         mergeMap(() =>
             interval(store.value.rx.interval).pipe(
                 takeUntil(action$.pipe(ofType(TIMER_STOP))),
@@ -50,7 +51,7 @@ const runTimer = (action$, store) =>
 
 const getSignal = (action$, state$, { wsAPI }) =>
     action$.pipe(
-        ofType(...[GET_SIGNAL, INTERVAL_GET]),
+        ofType(GET_SIGNAL, INTERVAL_GET),
         switchMap(() =>
             from(getStationSignal(wsAPI, state$.value.rx.data.most_active))
         ),
@@ -59,7 +60,7 @@ const getSignal = (action$, state$, { wsAPI }) =>
 
 const getTraffic = (action$, state$, { wsAPI }) =>
     action$.pipe(
-        ofType(...[GET_TRAFFIC, INTERVAL_GET]),
+        ofType(GET_TRAFFIC, INTERVAL_GET),
         switchMap(() =>
             from(getStationTraffic(wsAPI, state$.value.rx.data.most_active))
         ),
@@ -68,7 +69,7 @@ const getTraffic = (action$, state$, { wsAPI }) =>
 
 const getInternet = (action$, _state$, { wsAPI }) =>
     action$.pipe(
-        ofType(...[GET_NODE_STATUS_SUCCESS, GET_INTERNET_STATUS, INTERVAL_GET]),
+        ofType(GET_NODE_STATUS_SUCCESS, GET_INTERNET_STATUS, INTERVAL_GET),
         switchMap(() => from(getInternetStatus(wsAPI))),
         map((status) => ({
             type: GET_INTERNET_STATUS_SUCCESS,

@@ -1,8 +1,9 @@
 import { action } from "@storybook/addon-actions";
 
+import { LocatePage } from "./src/locatePage";
+
 export default {
     title: "Containers/Map",
-    // eslint-disable-next-line no-undef
     component: LocatePage,
 };
 
@@ -12,12 +13,9 @@ const actions = {
 };
 
 export const nodeAndCommunityNotLocated = () => (
-    // eslint-disable-next-line react/jsx-no-undef
     <LocatePage
         editting={false}
         submitting={false}
-        stationLat={false}
-        stationLon={false}
         nodesData={{}}
         isCommunityLocation={false}
         {...actions}
@@ -25,7 +23,6 @@ export const nodeAndCommunityNotLocated = () => (
 );
 
 export const nodeNotLocatedcommunityLocated = () => (
-    // eslint-disable-next-line react/jsx-no-undef
     <LocatePage
         editting={false}
         submitting={false}
@@ -38,7 +35,6 @@ export const nodeNotLocatedcommunityLocated = () => (
 );
 
 export const nodeLocated = () => (
-    // eslint-disable-next-line react/jsx-no-undef
     <LocatePage
         editting={false}
         submitting={false}
@@ -51,7 +47,6 @@ export const nodeLocated = () => (
 );
 
 export const edittingLocation = () => (
-    // eslint-disable-next-line react/jsx-no-undef
     <LocatePage
         editting={true}
         submitting={false}
@@ -64,7 +59,6 @@ export const edittingLocation = () => (
 );
 
 export const submittingLocation = () => (
-    // eslint-disable-next-line react/jsx-no-undef
     <LocatePage
         editting={true}
         submitting={true}
@@ -941,7 +935,6 @@ export const withCommunityData = () => {
         },
     };
     return (
-        // eslint-disable-next-line react/jsx-no-undef
         <LocatePage
             editting={false}
             submitting={false}

@@ -101,7 +101,7 @@ const MostActiveBox = ({ node, changeNode }) => {
                     <b>{stripIface(bathost.hostname)}</b>
                 </a>
             ) : (
-                <span class="withLoadingEllipsis">
+                <span className="withLoadingEllipsis">
                     <Trans>Fetching name</Trans>
                 </span>
             )}

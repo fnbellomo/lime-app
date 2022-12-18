@@ -76,6 +76,7 @@ const loadMetrics = (action$, store, { wsAPI }) =>
         map(() => store.value.metrics.metrics), // Get array of paths
         map((paths) =>
             from(paths).pipe(
+                // @ts-ignore
                 concatMap((path) => getMetrics(wsAPI, { target: path.host.ip })) // Change array of paths for array of observables
             )
         ),

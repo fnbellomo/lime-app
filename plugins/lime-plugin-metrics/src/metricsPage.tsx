@@ -21,7 +21,7 @@ import {
 
 const style = {
     textLoading: {
-        textAlign: "center",
+        textAlign: "center" as const,
         display: "block",
         background: "#3bc1a5",
         color: "#fff",
@@ -30,7 +30,7 @@ const style = {
         fontWeight: "bold",
     },
     textError: {
-        textAlign: "center",
+        textAlign: "center" as const,
         display: "block",
         background: "#d55206",
         color: "#fff",
@@ -69,17 +69,17 @@ export const Metrics = ({
     function showButton(loading) {
         if (!loading) {
             return !isGateway(boardData.hostname, metrics.gateway) ? (
-                <div class="row">
+                <div className="row">
                     <br />
                     <button
-                        class="button block u-full-width"
+                        className="button block u-full-width"
                         type="submit"
                         onClick={clickGateway(metrics.gateway)}
                     >
                         <Trans>Only gateway</Trans>
                     </button>
                     <button
-                        class="button block u-full-width"
+                        className="button block u-full-width"
                         type="submit"
                         onClick={getMetricsAll}
                     >
@@ -87,7 +87,7 @@ export const Metrics = ({
                     </button>
                 </div>
             ) : (
-                <div class="row">
+                <div className="row">
                     <br />
                     <p>
                         <b>
@@ -136,7 +136,6 @@ export const Metrics = ({
             return (
                 <Box
                     title={<Trans>Internet connection</Trans>}
-                    style={{ marginTop: "15px" }}
                 >
                     <span>
                         <b>
@@ -202,7 +201,7 @@ export const Metrics = ({
     }, [boardData, getMetricsGateway, getInternetStatus]);
 
     return (
-        <div class="container container-padded" style={{ textAlign: "center" }}>
+        <div className="container container-padded" style={{ textAlign: "center" }}>
             {metrics.loading
                 ? showLoading(metrics.loading)
                 : metrics.error.map((x) => showError(x))}
